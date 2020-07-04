@@ -13,16 +13,18 @@ class JawabanModel{
                     ->select('jawaban.*')
                     ->get();
 
-        $pertanyaan = DB::table('pertanyaan')
-                        ->where('id','=',$pertanyaan_id)
-                        ->get();
-
-        return view('jawaban',['jawaban'=>$jawaban->all(),'pertanyaan'=>$pertanyaan->all()]);
+        return $jawaban;
     }
 
     public static function store($request){
-        DB::table('jawaban')->insert($request);
+        date_default_timezone_set('Asia/Jakarta');
+        $time = date("Y-m-j H:i:s");
 
-        return JawabanModel::get_all($request['pertanyaan_id']);
+        $request["created_at"] = $time;
+        $request["updated_at"] = $time;
+
+        $jawaban = DB::table('jawaban')->insert($request);
+
+        return $jawaban;
     }
 }

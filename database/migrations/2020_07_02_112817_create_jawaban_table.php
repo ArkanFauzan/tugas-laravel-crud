@@ -16,7 +16,7 @@ class CreateJawabanTable extends Migration
         Schema::create('jawaban', function (Blueprint $table) {
             $table->Increments('id');
             $table->integer('pertanyaan_id')->unsigned();
-            $table->foreign('pertanyaan_id')->references('id')->on('pertanyaan');
+            $table->foreign('pertanyaan_id')->references('id')->on('pertanyaan')->onDelete('CASCADE');
             $table->string('isi');
             $table->date('tanggal_dibuat')->nullable();
             $table->date('tanggal_diperbaharui')->nullable();

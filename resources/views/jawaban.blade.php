@@ -1,8 +1,8 @@
 @extends('layout.master')
 
 @section('content')
-    <h2>{{$pertanyaan[0]->judul}}</h2>
-    <h4>{{$pertanyaan[0]->isi}}</h4>
+    <h2>{{$pertanyaan->judul}}</h2>
+    <h4>{{$pertanyaan->isi}}</h4>
     <br/>
 
     <table class="table table-striped">
@@ -26,7 +26,7 @@
     </table>
 
     <h5 class="pt-3">Anda punya jawaban lain? Silahkan bantu</h5>
-    <form action="/jawaban/{{$pertanyaan[0]->id}}" method="POST">
+    <form action="/jawaban/{{$pertanyaan->id}}" method="POST">
         @csrf
         <div class="form-group">
             <textarea style="width:50%" name="isi"></textarea>
